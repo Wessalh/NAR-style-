@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Numeric Style (Full Titles, Chemical Abstracts Abbreviations)</title>
+    <id>http://www.zotero.org/styles/numeric-fulltitle</id>
+    <link href="http://www.zotero.org/styles/numeric-fulltitle" rel="self"/>
+    <link href="http://www.zotero.org/styles/numeric" rel="template"/>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <updated>2024-06-20T18:30:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <group delimiter=". ">
+      <text variable="DOI" prefix="https://doi.org/"/>
+      <text variable="URL"/>
+    </group>
+  </macro>
+  <macro name="journal">
+    <choose>
+      <if type="article-journal">
+        <text variable="container-title" form="short"/>
+      </if>
+      <else>
+        <text variable="container-title"/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="3">
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout>
+      <text variable="citation-number" suffix=". "/>
+      <group delimiter=". ">
+        <text macro="author"/>
+        <text variable="title"/>
+        <text macro="journal"/>
+        <text variable="volume"/>
+        <text variable="page" prefix=": "/>
+        <text variable="issued" form="numeric" date-parts="year"/>
+        <text macro="access"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

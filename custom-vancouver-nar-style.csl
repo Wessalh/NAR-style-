@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" demote-non-dropping-particle="sort-only" initialize-with-hyphen="false" page-range-format="minimal">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Custom Vancouver - NAR Style</title>
+    <id>http://www.zotero.org/styles/custom-vancouver-nar-style</id>
+    <link href="http://www.zotero.org/styles/custom-vancouver-nar-style" rel="self"/>
+    <author>
+      <name>Your Name</name>
+    </author>
+    <category citation-format="numeric"/>
+    <summary>Custom Vancouver style matching Nucleic Acids Research reference formatting guidelines</summary>
+    <updated>2025-06-22T14:31:00+00:00</updated>
+  </info>
+  <locale xml:lang="en">
+    <date form="text" delimiter=" ">
+      <date-part name="year"/>
+      <date-part name="month" form="short" strip-periods="true"/>
+      <date-part name="day"/>
+    </date>
+  </locale>
+  <macro name="author">
+    <names variable="author" delimiter=", " and="text" et-al-min="4" et-al-use-first="3" initialize-with="">
+      <name form="short" name-as-sort-order="first"/>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" delimiter=", " and="text" initialize-with="">
+      <name form="short" name-as-sort-order="first"/>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title" font-style="normal" suffix=". "/>
+  </macro>
+  <macro name="container-title">
+    <text variable="container-title" form="short" strip-periods="true" font-style="italic" suffix=". "/>
+  </macro>
+  <macro name="date">
+    <date variable="issued" form="text" suffix="; "/>
+  </macro>
+  <macro name="volume-pages">
+    <group delimiter=": " suffix=". ">
+      <text variable="volume"/>
+      <text variable="page"/>
+    </group>
+  </macro>
+  <macro name="doi">
+    <choose>
+      <if variable="DOI">
+        <text variable="DOI" prefix="https://doi.org/"/>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="7" et-al-use-first="6" second-field-align="flush">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout>
+      <group delimiter=". " suffix=".">
+        <text variable="citation-number" suffix="."/>
+        <text macro="author"/>
+        <text macro="title"/>
+        <group delimiter=" ">
+          <text macro="container-title"/>
+          <text macro="date"/>
+          <text macro="volume-pages"/>
+          <text macro="doi"/>
+        </group>
+        <choose>
+          <if type="book">
+            <group delimiter=". ">
+              <text macro="editor"/>
+              <text variable="publisher-place"/>
+              <text variable="publisher"/>
+              <text macro="date"/>
+            </group>
+          </if>
+        </choose>
+        <choose>
+          <if type="chapter">
+            <group delimiter=". ">
+              <text macro="chapter-marker"/>
+              <text macro="editor"/>
+              <text variable="container-title"/>
+              <text variable="publisher-place"/>
+              <text variable="publisher"/>
+              <text macro="date"/>
+              <text variable="page"/>
+            </group>
+          </if>
+        </choose>
+        <choose>
+          <if type="preprint">
+            <group delimiter=". ">
+              <text variable="container-title"/>
+              <text macro="doi"/>
+              <text variable="issued" form="text"/>
+              <text value="preprint: not peer-reviewed."/>
+            </group>
+          </if>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>
